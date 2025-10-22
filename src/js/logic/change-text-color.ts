@@ -117,7 +117,7 @@ export async function changeTextColor() {
     ).promise;
 
     for (let i = 1; i <= pdf.numPages; i++) {
-      showLoader(`Processing page ${i} of ${pdf.numPages}...`);
+      showLoader(`正在处理第 ${i} 页，共 ${pdf.numPages} 页...`);
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale: 2.0 }); // High resolution for quality
 

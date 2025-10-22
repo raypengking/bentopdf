@@ -185,7 +185,7 @@ async function performFlatteningCrop(cropData: any) {
 
   for (let i = 0; i < totalPages; i++) {
     const pageNum = i + 1;
-    showLoader(`Processing page ${pageNum} of ${totalPages}...`);
+    showLoader(`正在处理第 ${pageNum} 页，共 ${totalPages} 页...`);
 
     if (cropData[pageNum]) {
       const page = await cropperState.pdfDoc.getPage(pageNum);

@@ -129,7 +129,7 @@ async function runOCR() {
 
     for (let i = 1; i <= pdf.numPages; i++) {
       updateProgress(
-        `Processing page ${i} of ${pdf.numPages}`,
+        `正在处理第 ${i} 页，共 ${pdf.numPages} 页`,
         (i - 1) / pdf.numPages
       );
       const page = await pdf.getPage(i);

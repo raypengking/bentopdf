@@ -21,7 +21,7 @@ export async function splitInHalf() {
       const { width, height } = originalPage.getSize();
       const whiteColor = rgb(1, 1, 1); // For masking
 
-      showLoader(`Processing page ${i + 1} of ${pages.length}...`);
+      showLoader(`正在处理第 ${i + 1} 页，共 ${pages.length} 页...`);
 
       // Copy the page twice for all split types
       const [page1] = await newPdfDoc.copyPages(state.pdfDoc, [i]);
