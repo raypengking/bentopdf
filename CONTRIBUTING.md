@@ -1,6 +1,6 @@
-# Contributing to BentoPDF
+# Contributing to RayPDF
 
-First off, thank you for considering contributing to **BentoPDF**! Your help makes this project better for everyone.
+First off, thank you for considering contributing to **RayPDF**! Your help makes this project better for everyone.
 
 This document outlines how to contribute, report issues, and get involved in the project.
 
@@ -122,4 +122,4 @@ All contributors are expected to follow the Code of Conduct. Be respectful and c
 
 ---
 
-Thank you for helping make **BentoPDF** a better library for everyone!
+Thank you for helping make **RayPDF** a better library for everyone!
