@@ -112,7 +112,7 @@ When submitting code contributions, please use our [pull request template](.gith
 
 If you discover a security vulnerability, please **do not** open a public issue. Instead, contact the project maintainer directly at:
 
-**Email:** [contact@bentopdf.com](mailto:contact@bentopdf.com)
+**Email:** [lp370304@gmail.com](mailto:lp370304@gmail.com)
 
 ---
 
