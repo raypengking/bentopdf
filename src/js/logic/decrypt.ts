@@ -26,7 +26,7 @@ export async function decrypt() {
 
     for (let i = 1; i <= numPages; i++) {
       document.getElementById('loader-text').textContent =
-        `Processing page ${i} of ${numPages}...`;
+        `正在处理第 ${i} 页，共 ${numPages} 页...`;
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale: 2.0 });
       const canvas = document.createElement('canvas');

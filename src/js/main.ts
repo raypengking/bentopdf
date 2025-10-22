@@ -115,7 +115,7 @@ const init = () => {
   }
 
   createIcons({ icons });
-  console.log('Please share our tool and share the love!');
+  console.log('欢迎分享我们的工具，让更多人受益！');
 };
 
 document.addEventListener('DOMContentLoaded', init);
