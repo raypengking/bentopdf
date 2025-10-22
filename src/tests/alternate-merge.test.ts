@@ -68,7 +68,7 @@ describe('Alternate Merge Tool', () => {
     it('should initialize UI and load PDF files', async () => {
       await setupAlternateMergeTool();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Loading PDF documents...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在加载 PDF 文件...');
       expect(ui.hideLoader).toHaveBeenCalled();
       expect(PDFDocument.load).toHaveBeenCalledTimes(2);
       expect(document.querySelectorAll('#alternate-file-list li').length).toBe(
@@ -84,8 +84,8 @@ describe('Alternate Merge Tool', () => {
       await setupAlternateMergeTool();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Error',
-        expect.stringContaining('Failed to load one or more PDF files')
+        '错误',
+        '无法加载部分 PDF 文件，它们可能已损坏或受密码保护。'
       );
       expect(ui.hideLoader).toHaveBeenCalled();
     });
@@ -104,8 +104,8 @@ describe('Alternate Merge Tool', () => {
       await alternateMerge();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Not Enough Files',
-        expect.stringContaining('Please upload at least two PDF files')
+        '文件数量不足',
+        '请至少上传两个 PDF 文件以交替合并。'
       );
     });
 
@@ -136,17 +136,12 @@ describe('Alternate Merge Tool', () => {
 
       await alternateMerge();
 
-      expect(ui.showLoader).toHaveBeenCalledWith(
-        expect.stringContaining('Alternating')
-      );
+      expect(ui.showLoader).toHaveBeenCalledWith('正在交替合并页面...');
       expect(mockCopyPages).toHaveBeenCalled();
       expect(mockAddPage).toHaveBeenCalled();
       expect(mockSave).toHaveBeenCalled();
       expect(helpers.downloadFile).toHaveBeenCalled();
-      expect(ui.showAlert).toHaveBeenCalledWith(
-        'Success',
-        expect.stringContaining('mixed successfully')
-      );
+      expect(ui.showAlert).toHaveBeenCalledWith('成功', '已成功交替合并这些 PDF！');
       expect(ui.hideLoader).toHaveBeenCalled();
     });
 
@@ -161,8 +156,8 @@ describe('Alternate Merge Tool', () => {
       await alternateMerge();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Error',
-        expect.stringContaining('An error occurred while mixing')
+        '错误',
+        '合并 PDF 时发生错误。'
       );
       expect(ui.hideLoader).toHaveBeenCalled();
     });

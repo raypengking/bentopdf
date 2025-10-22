@@ -26,7 +26,7 @@ function sanitizeImageAsJpeg(imageBytes: any) {
       canvas.toBlob(
         async (jpegBlob) => {
           if (!jpegBlob)
-            return reject(new Error('Canvas to JPEG conversion failed.'));
+            return reject(new Error('Canvas 转换 JPEG 失败。'));
           resolve(new Uint8Array(await jpegBlob.arrayBuffer()));
         },
         'image/jpeg',
@@ -36,7 +36,7 @@ function sanitizeImageAsJpeg(imageBytes: any) {
     };
     img.onerror = () => {
       URL.revokeObjectURL(imageUrl);
-      reject(new Error('File could not be loaded as an image.'));
+      reject(new Error('无法将文件加载为图像。'));
     };
     img.src = imageUrl;
   });
@@ -61,14 +61,14 @@ function sanitizeImageAsPng(imageBytes: any) {
       ctx.drawImage(img, 0, 0);
       canvas.toBlob(async (pngBlob) => {
         if (!pngBlob)
-          return reject(new Error('Canvas to PNG conversion failed.'));
+          return reject(new Error('Canvas 转换 PNG 失败。'));
         resolve(new Uint8Array(await pngBlob.arrayBuffer()));
       }, 'image/png');
       URL.revokeObjectURL(imageUrl);
     };
     img.onerror = () => {
       URL.revokeObjectURL(imageUrl);
-      reject(new Error('File could not be loaded as an image.'));
+      reject(new Error('无法将文件加载为图像。'));
     };
     img.src = imageUrl;
   });
@@ -76,10 +76,10 @@ function sanitizeImageAsPng(imageBytes: any) {
 
 export async function imageToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one image file.');
+    showAlert('未选择文件', '请至少选择一张图片。');
     return;
   }
-  showLoader('Converting images to PDF...');
+  showLoader('正在将图片转换为 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
     const imageList = document.getElementById('image-list');
@@ -97,7 +97,7 @@ export async function imageToPdf() {
           image = await pdfDoc.embedJpg(fileBuffer as Uint8Array);
         } catch (e) {
           console.warn(
-            `Direct JPG embedding failed for ${file.name}, sanitizing to JPG...`
+            `直接嵌入 JPG 失败：${file.name}，正在转为 JPG 后重试...`
           );
           const sanitizedBytes = await sanitizeImageAsJpeg(fileBuffer);
           image = await pdfDoc.embedJpg(sanitizedBytes as Uint8Array);
@@ -107,7 +107,7 @@ export async function imageToPdf() {
           image = await pdfDoc.embedPng(fileBuffer as Uint8Array);
         } catch (e) {
           console.warn(
-            `Direct PNG embedding failed for ${file.name}, sanitizing to PNG...`
+            `直接嵌入 PNG 失败：${file.name}，正在转为 PNG 后重试...`
           );
           const sanitizedBytes = await sanitizeImageAsPng(fileBuffer);
           image = await pdfDoc.embedPng(sanitizedBytes as Uint8Array);
@@ -115,7 +115,7 @@ export async function imageToPdf() {
       } else {
         // For WebP and other types, convert to PNG to preserve transparency
         console.warn(
-          `Unsupported type "${file.type}" for ${file.name}, converting to PNG...`
+          `不支持的类型 "${file.type}"（${file.name}），将先转换为 PNG...`
         );
         const sanitizedBytes = await sanitizeImageAsPng(fileBuffer);
         image = await pdfDoc.embedPng(sanitizedBytes as Uint8Array);
@@ -131,9 +131,7 @@ export async function imageToPdf() {
     }
 
     if (pdfDoc.getPageCount() === 0) {
-      throw new Error(
-        'No valid images could be processed. Please check your files.'
-      );
+      throw new Error('没有可处理的有效图片，请检查文件。');
     }
 
     const pdfBytes = await pdfDoc.save();
@@ -143,7 +141,7 @@ export async function imageToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', e.message || 'Failed to create PDF from images.');
+    showAlert('错误', e.message || '无法从图片生成 PDF。');
   } finally {
     hideLoader();
   }

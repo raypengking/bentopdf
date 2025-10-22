@@ -68,8 +68,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter a page number.'
+        '输入无效',
+        '请输入页码。'
       );
       expect(ui.showLoader).not.toHaveBeenCalled();
     });
@@ -83,8 +83,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter the number of pages to insert.'
+        '输入无效',
+        '请输入要插入的页数。'
       );
       expect(ui.showLoader).not.toHaveBeenCalled();
     });
@@ -98,8 +98,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter a number between 0 and 5.'
+        '输入无效',
+        '请输入 0 到 5 之间的数字。'
       );
     });
 
@@ -112,8 +112,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter a number between 0 and 5.'
+        '输入无效',
+        '请输入 0 到 5 之间的数字。'
       );
     });
 
@@ -126,8 +126,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter a valid number of pages (1 or more).'
+        '输入无效',
+        '请输入有效的页数（至少 1 页）。'
       );
     });
 
@@ -140,8 +140,8 @@ describe('Add Blank Page Tool', () => {
       await addBlankPage();
 
       expect(ui.showAlert).toHaveBeenCalledWith(
-        'Invalid Input',
-        'Please enter a valid number of pages (1 or more).'
+        '输入无效',
+        '请输入有效的页数（至少 1 页）。'
       );
     });
   });
@@ -156,7 +156,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 1 blank page...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 1 个空白页...');
       expect(PDFLibDocument.create).toHaveBeenCalled();
       // Should add 1 blank page + 5 existing pages = 6 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(6);
@@ -177,7 +177,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 1 blank page...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 1 个空白页...');
       expect(mockNewDoc.copyPages).toHaveBeenCalledWith(state.pdfDoc, [0, 1]);
       // Should add 1 blank page + 5 existing pages = 6 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(6);
@@ -218,7 +218,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 3 blank pages...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 3 个空白页...');
       // Should add 3 blank pages + 5 existing pages = 8 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(8);
       expect(helpers.downloadFile).toHaveBeenCalledWith(
@@ -235,7 +235,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 5 blank pages...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 5 个空白页...');
       expect(mockNewDoc.copyPages).toHaveBeenCalledWith(state.pdfDoc, [0, 1]);
       // Should add 5 blank pages + 5 existing pages = 10 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(10);
@@ -254,7 +254,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 2 blank pages...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 2 个空白页...');
       expect(mockNewDoc.copyPages).toHaveBeenCalledWith(state.pdfDoc, [0, 1, 2, 3, 4]);
       // Should add 2 blank pages + 5 existing pages = 7 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(7);
@@ -277,7 +277,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showAlert).toHaveBeenCalledWith('Error', 'Could not add blank page.');
+      expect(ui.showAlert).toHaveBeenCalledWith('错误', '未能插入空白页。');
       expect(ui.hideLoader).toHaveBeenCalled();
     });
 
@@ -291,7 +291,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showAlert).toHaveBeenCalledWith('Error', 'Could not add blank page.');
+      expect(ui.showAlert).toHaveBeenCalledWith('错误', '未能插入空白页。');
       expect(ui.hideLoader).toHaveBeenCalled();
     });
 
@@ -305,7 +305,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showAlert).toHaveBeenCalledWith('Error', 'Could not add blank page.');
+      expect(ui.showAlert).toHaveBeenCalledWith('错误', '未能插入空白页。');
       expect(ui.hideLoader).toHaveBeenCalled();
     });
   });
@@ -336,7 +336,7 @@ describe('Add Blank Page Tool', () => {
 
       await addBlankPage();
 
-      expect(ui.showLoader).toHaveBeenCalledWith('Adding 100 blank pages...');
+      expect(ui.showLoader).toHaveBeenCalledWith('正在插入 100 个空白页...');
       // Should add 100 blank pages + 5 existing pages = 105 total calls
       expect(mockNewDoc.addPage).toHaveBeenCalledTimes(105);
       expect(helpers.downloadFile).toHaveBeenCalledWith(

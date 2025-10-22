@@ -12,7 +12,7 @@ export function setupHeaderFooterUI() {
 }
 
 export async function addHeaderFooter() {
-  showLoader('Adding header & footer...');
+  showLoader('正在添加页眉页脚...');
   try {
     const helveticaFont = await state.pdfDoc.embedFont(StandardFonts.Helvetica);
     const allPages = state.pdfDoc.getPages();
@@ -47,9 +47,7 @@ export async function addHeaderFooter() {
     // --- 3. Parse page range to determine which pages to modify ---
     const indicesToProcess = parsePageRanges(pageRangeInput, totalPages);
     if (indicesToProcess.length === 0) {
-      throw new Error(
-        "Invalid page range specified. Please check your input (e.g., '1-3, 5')."
-      );
+      throw new Error('页码范围无效，请检查输入（例如：1-3, 5）。');
     }
 
     // --- 4. Define drawing options with new values ---
@@ -150,7 +148,7 @@ export async function addHeaderFooter() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', e.message || 'Could not add header or footer.');
+    showAlert('错误', e.message || '无法添加页眉或页脚。');
   } finally {
     hideLoader();
   }

@@ -148,7 +148,7 @@ async function renderPageMergeThumbnails() {
       for (let i = 1; i <= pdfjsDoc.numPages; i++) {
         currentPageNumber++;
         showLoader(
-          `Rendering page previews: ${currentPageNumber}/${totalPages}`
+          `正在生成页面预览：${currentPageNumber}/${totalPages}`
         );
         const page = await pdfjsDoc.getPage(i);
         const viewport = page.getViewport({ scale: 0.3 });
@@ -202,7 +202,7 @@ async function renderPageMergeThumbnails() {
     initializePageThumbnailsSortable();
   } catch (error) {
     console.error('Error rendering page thumbnails:', error);
-    showAlert('Error', 'Failed to render page thumbnails');
+    showAlert('错误', '无法生成页面缩略图。');
   } finally {
     hideLoader();
     mergeState.isRendering = false;
@@ -210,7 +210,7 @@ async function renderPageMergeThumbnails() {
 }
 
 export async function merge() {
-  showLoader('Merging PDFs...');
+  showLoader('正在合并 PDF...');
   try {
     const newPdfDoc = await PDFLibDocument.create();
 
@@ -266,13 +266,10 @@ export async function merge() {
       new Blob([new Uint8Array(mergedPdfBytes)], { type: 'application/pdf' }),
       'merged.pdf'
     );
-    showAlert('Success', 'PDFs merged successfully!');
+    showAlert('成功', 'PDF 合并成功！');
   } catch (e) {
     console.error('Merge error:', e);
-    showAlert(
-      'Error',
-      'Failed to merge PDFs. Please check that all files are valid and not password-protected.'
-    );
+    showAlert('错误', '合并 PDF 失败，请确认文件有效且未加密。');
   } finally {
     hideLoader();
   }
@@ -285,7 +282,7 @@ export async function setupMergeTool() {
 
   const wasInPageMode = mergeState.activeMode === 'page';
 
-  showLoader('Loading PDF documents...');
+  showLoader('正在加载 PDF 文件...');
   try {
     for (const file of state.files) {
       if (!mergeState.pdfDocs[file.name]) {
@@ -300,7 +297,7 @@ export async function setupMergeTool() {
     }
   } catch (error) {
     console.error('Error loading PDFs:', error);
-    showAlert('Error', 'Failed to load one or more PDF files');
+    showAlert('错误', '无法加载部分 PDF 文件。');
     return;
   } finally {
     hideLoader();
@@ -344,14 +341,14 @@ export async function setupMergeTool() {
     const label = document.createElement('label');
     label.htmlFor = `range-${safeFileName}`;
     label.className = 'text-xs text-gray-400';
-    label.textContent = `Pages (e.g., 1-3, 5) - Total: ${pageCount}`;
+    label.textContent = `页面范围（例如：1-3, 5）- 共 ${pageCount} 页`;
 
     const input = document.createElement('input');
     input.type = 'text';
     input.id = `range-${safeFileName}`;
     input.className =
       'w-full bg-gray-800 border border-gray-600 text-white rounded-md p-2 text-sm mt-1 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors';
-    input.placeholder = 'Leave blank for all pages';
+    input.placeholder = '留空表示全部页面';
 
     rangeDiv.append(label, input);
     li.append(mainDiv, rangeDiv);

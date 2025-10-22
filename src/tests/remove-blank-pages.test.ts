@@ -151,7 +151,7 @@ describe('Remove Blank Pages Tool', () => {
     await setupRemoveBlankPagesTool();
     await removeBlankPages();
 
-    expect(ui.showLoader).toHaveBeenCalledWith('Removing blank pages...');
+    expect(ui.showLoader).toHaveBeenCalledWith('正在移除空白页...');
     expect(PDFDocument.create).toHaveBeenCalled();
     expect(mockNewDoc.copyPages).toHaveBeenCalled();
     expect(mockNewDoc.addPage).toHaveBeenCalled();
@@ -175,8 +175,8 @@ describe('Remove Blank Pages Tool', () => {
     await removeBlankPages();
 
     expect(ui.showAlert).toHaveBeenCalledWith(
-      'No Content Found',
-      expect.stringContaining('All pages were identified as blank')
+      '未生成新文件',
+      '在当前灵敏度设置下所有页面均被判定为空白，因此未创建新文件。如有需要请降低灵敏度后重试。'
     );
     expect(helpers.downloadFile).not.toHaveBeenCalled();
   });
@@ -196,8 +196,8 @@ describe('Remove Blank Pages Tool', () => {
     await removeBlankPages();
 
     expect(ui.showAlert).toHaveBeenCalledWith(
-      'No Pages Removed',
-      'No pages were identified as blank at the current sensitivity level.'
+      '无页被删除',
+      '当前灵敏度下未检测到空白页。'
     );
     expect(helpers.downloadFile).not.toHaveBeenCalled();
   });

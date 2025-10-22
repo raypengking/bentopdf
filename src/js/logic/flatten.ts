@@ -4,10 +4,10 @@ import { state } from '../state.js';
 
 export async function flatten() {
   if (!state.pdfDoc) {
-    showAlert('Error', 'PDF not loaded.');
+    showAlert('错误', '尚未加载 PDF。');
     return;
   }
-  showLoader('Flattening PDF...');
+  showLoader('正在扁平化 PDF...');
   try {
     const form = state.pdfDoc.getForm();
     form.flatten();
@@ -20,12 +20,9 @@ export async function flatten() {
   } catch (e) {
     console.error(e);
     if (e.message.includes('getForm')) {
-      showAlert(
-        'No Form Found',
-        'This PDF does not contain any form fields to flatten.'
-      );
+      showAlert('未找到表单', '此 PDF 不包含可扁平化的表单字段。');
     } else {
-      showAlert('Error', 'Could not flatten the PDF.');
+      showAlert('错误', '无法扁平化该 PDF。');
     }
   } finally {
     hideLoader();

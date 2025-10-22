@@ -4,7 +4,7 @@ import { state } from '../state.js';
 import JSZip from 'jszip';
 
 export async function pdfToJpg() {
-  showLoader('Converting to JPG...');
+  showLoader('正在转换为 JPG...');
   try {
     // @ts-expect-error TS(2304) FIXME: Cannot find name 'pdfjsLib'.
     const pdf = await pdfjsLib.getDocument(
@@ -32,10 +32,7 @@ export async function pdfToJpg() {
     downloadFile(zipBlob, 'converted_images.zip');
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert PDF to JPG. The file might be corrupted.'
-    );
+    showAlert('错误', 'PDF 转 JPG 失败，文件可能已损坏。');
   } finally {
     hideLoader();
   }

@@ -6,10 +6,10 @@ import { PDFDocument as PDFLibDocument } from 'pdf-lib';
 
 export async function reversePages() {
   if (!state.pdfDoc) {
-    showAlert('Error', 'PDF not loaded.');
+    showAlert('错误', '尚未加载 PDF。');
     return;
   }
-  showLoader('Reversing page order...');
+  showLoader('正在倒序排列页面...');
   try {
     const newPdf = await PDFLibDocument.create();
     const pageCount = state.pdfDoc.getPageCount();
@@ -28,7 +28,7 @@ export async function reversePages() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not reverse the PDF pages.');
+    showAlert('错误', '无法倒序排列 PDF 页面。');
   } finally {
     hideLoader();
   }

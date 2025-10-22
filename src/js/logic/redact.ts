@@ -6,7 +6,7 @@ import { state } from '../state.js';
 const { rgb } = window.PDFLib;
 
 export async function redact(redactions: any, canvasScale: any) {
-  showLoader('Applying redactions...');
+  showLoader('正在应用涂黑区域...');
   try {
     const pdfPages = state.pdfDoc.getPages();
     const conversionScale = 1 / canvasScale;
@@ -37,7 +37,7 @@ export async function redact(redactions: any, canvasScale: any) {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to apply redactions.');
+    showAlert('错误', '无法应用涂黑处理。');
   } finally {
     hideLoader();
   }
