@@ -11,12 +11,12 @@ export async function encrypt() {
     document.getElementById('password-input') as HTMLInputElement
   ).value;
   if (!password.trim()) {
-    showAlert('Input Required', 'Please enter a password.');
+    showAlert('需要输入', '请输入密码。');
     return;
   }
 
   try {
-    showLoader('Preparing to process...');
+    showLoader('正在准备处理...');
     const pdfData = await readFileAsArrayBuffer(file);
     const pdf = await pdfjsLib.getDocument({ data: pdfData as ArrayBuffer })
       .promise;
@@ -45,7 +45,7 @@ export async function encrypt() {
     }
 
     document.getElementById('loader-text').textContent =
-      'Encrypting and building PDF...';
+      '正在加密并生成 PDF...';
     const doc = new PDFDocument({
       size: [pageImages[0].width, pageImages[0].height],
       pdfVersion: '1.7ext3', // Use 256-bit AES encryption
@@ -76,11 +76,11 @@ export async function encrypt() {
       const blob = stream.toBlob('application/pdf');
       downloadFile(blob, `encrypted-${file.name}`);
       hideLoader();
-      showAlert('Success', 'Encryption complete! Your download has started.');
+      showAlert('成功', '加密完成，下载已开始。');
     });
   } catch (error) {
     console.error('Error during PDF encryption:', error);
     hideLoader();
-    showAlert('Error', 'An error occurred. The PDF might be corrupted.');
+    showAlert('错误', '操作失败，PDF 可能已损坏。');
   }
 }

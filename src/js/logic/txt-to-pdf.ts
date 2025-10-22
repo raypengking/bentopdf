@@ -9,12 +9,12 @@ import {
 } from 'pdf-lib';
 
 export async function txtToPdf() {
-  showLoader('Creating PDF...');
+  showLoader('正在生成 PDF...');
   try {
     // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
     const text = document.getElementById('text-input').value;
     if (!text.trim()) {
-      showAlert('Input Required', 'Please enter some text to convert.');
+      showAlert('需要输入', '请输入要转换的文本。');
       hideLoader();
       return;
     }
@@ -88,7 +88,7 @@ export async function txtToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to create PDF from text.');
+    showAlert('错误', '无法从文本创建 PDF。');
   } finally {
     hideLoader();
   }

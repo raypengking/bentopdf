@@ -10,12 +10,12 @@ export async function addBlankPage() {
   const pageCountInput = document.getElementById('page-count').value;
   
   if (pageNumberInput.trim() === '') {
-    showAlert('Invalid Input', 'Please enter a page number.');
+    showAlert('输入无效', '请输入页码。');
     return;
   }
 
   if (pageCountInput.trim() === '') {
-    showAlert('Invalid Input', 'Please enter the number of pages to insert.');
+    showAlert('输入无效', '请输入要插入的页数。');
     return;
   }
 
@@ -24,18 +24,18 @@ export async function addBlankPage() {
   const totalPages = state.pdfDoc.getPageCount();
   if (isNaN(position) || position < 0 || position > totalPages) {
     showAlert(
-      'Invalid Input',
-      `Please enter a number between 0 and ${totalPages}.`
+      '输入无效',
+      `请输入 0 到 ${totalPages} 之间的数字。`
     );
     return;
   }
 
   if (isNaN(pageCount) || pageCount < 1) {
-    showAlert('Invalid Input', 'Please enter a valid number of pages (1 or more).');
+    showAlert('输入无效', '请输入有效的页数（至少 1 页）。');
     return;
   }
 
-  showLoader(`Adding ${pageCount} blank page${pageCount > 1 ? 's' : ''}...`);
+  showLoader(`正在插入 ${pageCount} 个空白页...`);
   try {
     const newPdf = await PDFLibDocument.create();
     const { width, height } = state.pdfDoc.getPage(0).getSize();
@@ -66,7 +66,7 @@ export async function addBlankPage() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', `Could not add blank page${pageCount > 1 ? 's' : ''}.`);
+    showAlert('错误', '未能插入空白页。');
   } finally {
     hideLoader();
   }

@@ -279,15 +279,15 @@ export async function compress() {
     let usedMethod;
 
     if (algorithm === 'vector') {
-      showLoader('Running Vector (Smart) compression...');
+      showLoader('正在运行矢量（智能）压缩...');
       resultBytes = await performSmartCompression(arrayBuffer, smartSettings);
       usedMethod = 'Vector';
     } else if (algorithm === 'photon') {
-      showLoader('Running Photon (Rasterize) compression...');
+      showLoader('正在运行 Photon（光栅化）压缩...');
       resultBytes = await performLegacyCompression(arrayBuffer, legacySettings);
       usedMethod = 'Photon';
     } else {
-      showLoader('Running Automatic (Vector first)...');
+      showLoader('正在执行自动模式（优先矢量）...');
       const vectorResultBytes = await performSmartCompression(
         arrayBuffer,
         smartSettings
@@ -297,8 +297,8 @@ export async function compress() {
         resultBytes = vectorResultBytes;
         usedMethod = 'Vector (Automatic)';
       } else {
-        showAlert('Vector failed to reduce size. Trying Photon...', 'info');
-        showLoader('Running Automatic (Photon fallback)...');
+        showAlert('提示', '矢量压缩未能减小体积，尝试切换至 Photon 模式。');
+        showLoader('正在执行自动模式（回退到 Photon）...');
         resultBytes = await performLegacyCompression(
           arrayBuffer,
           legacySettings
@@ -315,15 +315,13 @@ export async function compress() {
 
     if (savings > 0) {
       showAlert(
-        'Compression Complete',
-        `Method: **${usedMethod}**. ` +
-          `File size reduced from ${originalSize} to ${compressedSize} (Saved ${savingsPercent}%).`
+        '压缩完成',
+        `压缩方式：**${usedMethod}**。文件大小由 ${originalSize} 减至 ${compressedSize}（节省 ${savingsPercent}%）。`
       );
     } else {
       showAlert(
-        'Compression Finished',
-        `Method: **${usedMethod}**. ` +
-          `Could not reduce file size. Original: ${originalSize}, New: ${compressedSize}.`,
+        '压缩结束',
+        `压缩方式：**${usedMethod}**。文件大小未能减小：原始 ${originalSize}，结果 ${compressedSize}。`,
         // @ts-expect-error TS(2554) FIXME: Expected 2 arguments, but got 3.
         'warning'
       );
@@ -334,10 +332,7 @@ export async function compress() {
       'compressed-final.pdf'
     );
   } catch (e) {
-    showAlert(
-      'Error',
-      `An error occurred during compression. Error: ${e.message}`
-    );
+    showAlert('错误', `压缩过程中发生错误：${e.message}`);
   } finally {
     hideLoader();
   }

@@ -10,12 +10,12 @@ export async function decrypt() {
   // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
   const password = document.getElementById('password-input').value;
   if (!password.trim()) {
-    showAlert('Input Required', 'Please enter the PDF password.');
+    showAlert('需要输入', '请输入 PDF 密码。');
     return;
   }
 
   try {
-    showLoader('Preparing to process...');
+    showLoader('正在准备处理...');
     const pdfData = (await readFileAsArrayBuffer(file)) as ArrayBuffer;
     const pdf = await pdfjsLib.getDocument({
       data: pdfData,
@@ -46,7 +46,7 @@ export async function decrypt() {
     }
 
     document.getElementById('loader-text').textContent =
-      'Building unlocked PDF...';
+      '正在生成解锁后的 PDF...';
     const doc = new PDFDocument({
       size: [pageImages[0].width, pageImages[0].height],
     });
@@ -65,15 +65,15 @@ export async function decrypt() {
       const blob = stream.toBlob('application/pdf');
       downloadFile(blob, `unlocked-${file.name}`);
       hideLoader();
-      showAlert('Success', 'Decryption complete! Your download has started.');
+      showAlert('成功', '解密完成，下载已开始。');
     });
   } catch (error) {
     console.error('Error during PDF decryption:', error);
     hideLoader();
     if (error.name === 'PasswordException') {
-      showAlert('Incorrect Password', 'The password you entered is incorrect.');
+      showAlert('密码错误', '您输入的密码不正确。');
     } else {
-      showAlert('Error', 'An error occurred. The PDF might be corrupted.');
+      showAlert('错误', '操作失败，PDF 可能已损坏。');
     }
   }
 }

@@ -6,11 +6,11 @@ import { state } from '../state.js';
 export async function wordToPdf() {
   const file = state.files[0];
   if (!file) {
-    showAlert('No File', 'Please upload a .docx file first.');
+    showAlert('未选择文件', '请先上传一个 .docx 文件。');
     return;
   }
 
-  showLoader('Preparing preview...');
+  showLoader('正在准备预览...');
 
   try {
     const mammothOptions = {
@@ -66,7 +66,7 @@ export async function wordToPdf() {
     hideLoader();
 
     const downloadHandler = async () => {
-      showLoader('Generating High-Quality PDF...');
+      showLoader('正在生成高质量 PDF...');
 
       // @ts-expect-error TS(2339) FIXME: Property 'jspdf' does not exist on type 'Window & ... Remove this comment to see the full error message
       const { jsPDF } = window.jspdf;
@@ -104,7 +104,7 @@ export async function wordToPdf() {
                 { url: link.href }
               );
             } catch (e) {
-              console.warn('Could not add link:', link.href, e);
+              console.warn('无法添加链接:', link.href, e);
             }
           });
 
@@ -133,8 +133,8 @@ export async function wordToPdf() {
     console.error(e);
     hideLoader();
     showAlert(
-      'Preview Error',
-      `Could not generate a preview. The file may be corrupt or contain unsupported features. Error: ${e.message}`
+      '预览失败',
+      `无法生成预览，文件可能损坏或包含不受支持的内容。错误信息：${e.message}`
     );
   }
 }

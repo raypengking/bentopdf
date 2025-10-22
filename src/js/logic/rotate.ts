@@ -5,7 +5,7 @@ import { state } from '../state.js';
 import { degrees } from 'pdf-lib';
 
 export async function rotate() {
-  showLoader('Applying rotations...');
+  showLoader('正在应用旋转...');
   try {
     const pages = state.pdfDoc.getPages();
     document.querySelectorAll('.page-rotator-item').forEach((item) => {
@@ -26,7 +26,7 @@ export async function rotate() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not apply rotations.');
+    showAlert('错误', '无法应用旋转。');
   } finally {
     hideLoader();
   }

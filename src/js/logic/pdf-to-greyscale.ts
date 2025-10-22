@@ -6,10 +6,10 @@ import { PDFDocument as PDFLibDocument } from 'pdf-lib';
 
 export async function pdfToGreyscale() {
   if (!state.pdfDoc) {
-    showAlert('Error', 'PDF not loaded.');
+    showAlert('错误', '尚未加载 PDF。');
     return;
   }
-  showLoader('Converting to greyscale...');
+  showLoader('正在转换为灰度...');
   try {
     const newPdfDoc = await PDFLibDocument.create();
     const pdfBytes = await state.pdfDoc.save();
@@ -61,7 +61,7 @@ export async function pdfToGreyscale() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not convert to greyscale.');
+    showAlert('错误', '无法转换为灰度。');
   } finally {
     hideLoader();
   }

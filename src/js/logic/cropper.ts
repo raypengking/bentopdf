@@ -37,7 +37,7 @@ function saveCurrentCrop() {
  * @param {number} num The page number to render.
  */
 async function displayPageAsImage(num: any) {
-  showLoader(`Rendering Page ${num}...`);
+  showLoader(`正在渲染第 ${num} 页...`);
 
   try {
     const page = await cropperState.pdfDoc.getPage(num);
@@ -84,11 +84,11 @@ async function displayPageAsImage(num: any) {
       updatePageInfo();
       enableControls();
       hideLoader();
-      showAlert('Ready', 'Please select an area to crop.');
+      showAlert('准备就绪', '请选择要裁剪的区域。');
     };
   } catch (error) {
     console.error('Error rendering page:', error);
-    showAlert('Error', 'Failed to render page.');
+    showAlert('错误', '页面渲染失败。');
     hideLoader();
   }
 }
@@ -110,7 +110,7 @@ async function changePage(offset: any) {
 
 function updatePageInfo() {
   document.getElementById('page-info').textContent =
-    `Page ${cropperState.currentPageNum} of ${cropperState.pdfDoc.numPages}`;
+    `第 ${cropperState.currentPageNum} / ${cropperState.pdfDoc.numPages} 页`;
 }
 
 function enableControls() {
@@ -285,7 +285,7 @@ export async function setupCropperTool() {
           const currentCrop =
             cropperState.pageCrops[cropperState.currentPageNum];
           if (!currentCrop) {
-            showAlert('No Crop Area', 'Please select an area to crop first.');
+            showAlert('未选择区域', '请先框选需要裁剪的区域。');
             return;
           }
           // Apply the active page's crop to all pages
@@ -305,13 +305,13 @@ export async function setupCropperTool() {
 
         if (Object.keys(finalCropData).length === 0) {
           showAlert(
-            'No Crop Area',
-            'Please select an area on at least one page to crop.'
+            '未选择区域',
+            '请至少在一页上选择需要裁剪的范围。'
           );
           return;
         }
 
-        showLoader('Applying crop...');
+        showLoader('正在应用裁剪...');
 
         try {
           let finalPdfBytes;
@@ -333,16 +333,16 @@ export async function setupCropperTool() {
             new Blob([finalPdfBytes], { type: 'application/pdf' }),
             fileName
           );
-          showAlert('Success', 'Crop complete! Your download has started.');
+          showAlert('成功', '裁剪完成，下载已开始。');
         } catch (e) {
           console.error(e);
-          showAlert('Error', 'An error occurred during cropping.');
+          showAlert('错误', '裁剪过程中发生错误。');
         } finally {
           hideLoader();
         }
       });
   } catch (error) {
     console.error('Error setting up cropper tool:', error);
-    showAlert('Error', 'Failed to load PDF for cropping.');
+    showAlert('错误', '无法加载用于裁剪的 PDF。');
   }
 }

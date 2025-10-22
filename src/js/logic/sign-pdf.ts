@@ -465,7 +465,7 @@ export async function setupSignTool() {
 
   const updateFontPreview = () => {
     // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
-    fontPreview.textContent = textInput.value || 'Your Name';
+    fontPreview.textContent = textInput.value || '您的名字';
     // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
     fontPreview.style.fontFamily = fontFamilySelect.value;
     // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
@@ -503,10 +503,10 @@ export async function setupSignTool() {
 
 export async function applyAndSaveSignatures() {
   if (signState.placedSignatures.length === 0) {
-    showAlert('No Signatures Placed', 'Please place at least one signature.');
+    showAlert('未放置签名', '请至少放置一个签名。');
     return;
   }
-  showLoader('Applying signatures...');
+  showLoader('正在应用签名...');
   try {
     const pages = state.pdfDoc.getPages();
     for (const sig of signState.placedSignatures) {
@@ -541,7 +541,7 @@ export async function applyAndSaveSignatures() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to apply signatures.');
+    showAlert('错误', '应用签名时发生错误。');
   } finally {
     hideLoader();
   }

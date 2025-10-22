@@ -5,10 +5,10 @@ import JSZip from 'jszip';
 
 export async function pdfToZip() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select one or more PDF files.');
+    showAlert('未选择文件', '请至少选择一个 PDF 文件。');
     return;
   }
-  showLoader('Creating ZIP file...');
+  showLoader('正在创建 ZIP 文件...');
   try {
     const zip = new JSZip();
     for (const file of state.files) {
@@ -19,7 +19,7 @@ export async function pdfToZip() {
     downloadFile(zipBlob, 'pdfs.zip');
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to create ZIP file.');
+    showAlert('错误', '创建 ZIP 文件失败。');
   } finally {
     hideLoader();
   }
