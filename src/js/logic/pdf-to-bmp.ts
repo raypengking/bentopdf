@@ -51,7 +51,7 @@ function encodeBMP(imageData: any) {
 }
 
 export async function pdfToBmp() {
-  showLoader('Converting PDF to BMP images...');
+  showLoader('正在将 PDF 转换为 BMP 图像...');
   try {
     // @ts-expect-error TS(2304) FIXME: Cannot find name 'pdfjsLib'.
     const pdf = await pdfjsLib.getDocument(
@@ -60,7 +60,7 @@ export async function pdfToBmp() {
     const zip = new JSZip();
 
     for (let i = 1; i <= pdf.numPages; i++) {
-      showLoader(`Processing page ${i} of ${pdf.numPages}...`);
+      showLoader(`正在处理第 ${i} 页，共 ${pdf.numPages} 页...`);
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale: 1.5 });
       const canvas = document.createElement('canvas');
@@ -81,15 +81,12 @@ export async function pdfToBmp() {
       zip.file(`page_${i}.bmp`, bmpBuffer);
     }
 
-    showLoader('Compressing files into a ZIP...');
+    showLoader('正在打包生成 ZIP...');
     const zipBlob = await zip.generateAsync({ type: 'blob' });
     downloadFile(zipBlob, 'converted_bmp_images.zip');
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert PDF to BMP. The file might be corrupted.'
-    );
+    showAlert('错误', 'PDF 转 BMP 失败，文件可能已损坏。');
   } finally {
     hideLoader();
   }

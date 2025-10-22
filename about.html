@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Bentopdf - Fast, Private, and Free PDF Tools</title>
+    <title>关于 RayPDF - 快速、私密、免费的 PDF 工具</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,33 +22,64 @@
           >
             <img
               src="images/favicon.svg"
-              alt="Bentopdf Logo"
+              alt="RayPDF 徽标"
               class="h-8 w-8 mr-2"
             />
-            <span class="text-white font-bold text-xl">BentoPDF</span>
+            <span class="text-white font-bold text-xl">RayPDF</span>
           </a>
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="./about.html" class="nav-link">About</a>
-            <a href="./contact.html" class="nav-link">Contact</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="./about.html" class="nav-link">关于</a>
+            <a href="./contact.html" class="nav-link">联系</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
 
           <div class="md:hidden flex items-center gap-4">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
         </div>
       </div>
     </nav>
 
+    <section class="ad-banner-container border-b border-indigo-900/30">
+      <div class="container mx-auto px-4">
+        <div
+          class="ad-carousel"
+          role="region"
+          aria-label="合作伙伴广告轮播"
+        >
+          <button
+            id="ad-carousel-prev"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="上一条广告"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div class="ad-carousel-viewport" id="ad-carousel-viewport">
+            <ul class="ad-carousel-track" id="ad-carousel-track"></ul>
+          </div>
+          <button
+            id="ad-carousel-next"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="下一条广告"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="ad-carousel-dots" id="ad-carousel-dots"></div>
+      </div>
+    </section>
+
     <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
       <section id="about-hero" class="text-center py-16 md:py-24">
         <h1 class="text-3xl md:text-6xl font-bold text-white mb-4">
-          We believe PDF tools should be
-          <span class="marker-slanted">fast, private, and free.</span>
+          我们相信 PDF 工具应该
+          <span class="marker-slanted">快速、私密、免费。</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-400">No compromises.</p>
+        <p class="text-lg md:text-xl text-gray-400">绝不妥协。</p>
       </section>
 
       <div class="section-divider"></div>
@@ -60,35 +91,26 @@
             class="w-16 h-16 text-indigo-400 mx-auto mb-6"
           ></i>
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our Mission
+            我们的使命
           </h2>
           <p class="text-lg text-gray-400 leading-relaxed">
-            To provide the most comprehensive PDF toolbox that respects your
-            privacy and never asks for payment. We believe essential document
-            tools should be accessible to everyone, everywhere, without
-            barriers.
+            打造最完整的 PDF 工具箱，尊重你的隐私，并永远免费。我们相信，人人都应该可以随时随地使用基础的文档工具，而不被任何门槛阻挡。
           </p>
         </div>
       </section>
-
       <div
         class="bg-gray-800 rounded-xl p-8 md:p-12 my-16 border border-gray-700"
       >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="text-center md:text-left">
             <span class="text-indigo-400 font-bold uppercase"
-              >Our Core Philosophy</span
+              >我们的核心理念</span
             >
             <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
-              Privacy First. Always.
+              始终把隐私放在第一位。
             </h2>
             <p class="text-gray-400 leading-relaxed">
-              In an era where data is a commodity, we take a different approach.
-              All processing for Bentopdf tools happens locally in your browser.
-              This means your files never touch our servers, we never see your
-              documents, and we don't track what you do. Your documents remain
-              completely and unequivocally private. It's not just a feature;
-              it's our foundation.
+              在数据被视为商品的时代，我们选择另一条道路。RayPDF 的所有处理都在你的浏览器本地完成。这意味着你的文件不会触碰我们的服务器，我们看不到你的文档，也不会追踪你的操作。你的资料完完全全掌握在你手中——这不仅是一个功能，而是我们的立身之本。
             </p>
           </div>
           <div class="flex justify-center">
@@ -110,7 +132,7 @@
 
       <section id="why-Bentopdf" class="py-16">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
-          Why <span class="marker-slanted">Bentopdf?</span>
+          为什么选择 <span class="marker-slanted">RayPDF？</span>
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <div class="bg-gray-800 p-6 rounded-lg flex items-start gap-4">
@@ -119,11 +141,9 @@
               class="w-10 h-10 text-indigo-400 flex-shrink-0 mt-1"
             ></i>
             <div>
-              <h3 class="text-xl font-bold text-white">Built for Speed</h3>
+              <h3 class="text-xl font-bold text-white">为了速度而生</h3>
               <p class="text-gray-400 mt-2">
-                No waiting for uploads or downloads to a server. By processing
-                files directly in your browser using modern web technologies
-                like WebAssembly, we offer unparalleled speed for all our tools.
+                无需上传或下载到服务器。借助 WebAssembly 等现代技术，我们直接在浏览器中处理文件，带来难以匹敌的速度。
               </p>
             </div>
           </div>
@@ -133,11 +153,9 @@
               class="w-10 h-10 text-indigo-400 flex-shrink-0 mt-1"
             ></i>
             <div>
-              <h3 class="text-xl font-bold text-white">Completely Free</h3>
+              <h3 class="text-xl font-bold text-white">完全免费</h3>
               <p class="text-gray-400 mt-2">
-                No trials, no subscriptions, no hidden fees, and no "premium"
-                features held hostage. We believe powerful PDF tools should be a
-                public utility, not a profit center.
+                没有试用、没有订阅、没有隐藏费用，更不会把“高级功能”关在付费墙后。我们认为强大的 PDF 工具应该像公共服务一样，人人可用。
               </p>
             </div>
           </div>
@@ -147,11 +165,9 @@
               class="w-10 h-10 text-indigo-400 flex-shrink-0 mt-1"
             ></i>
             <div>
-              <h3 class="text-xl font-bold text-white">No Account Required</h3>
+              <h3 class="text-xl font-bold text-white">无需账号</h3>
               <p class="text-gray-400 mt-2">
-                Start using any tool immediately. We don't need your email, a
-                password, or any personal information. Your workflow should be
-                frictionless and anonymous.
+                立刻开始使用任何工具。我们不需要你的邮箱、密码或任何个人信息。你的工作流程应当顺畅而匿名。
               </p>
             </div>
           </div>
@@ -161,34 +177,28 @@
               class="w-10 h-10 text-indigo-400 flex-shrink-0 mt-1"
             ></i>
             <div>
-              <h3 class="text-xl font-bold text-white">Open Source Spirit</h3>
+              <h3 class="text-xl font-bold text-white">开放源码精神</h3>
               <p class="text-gray-400 mt-2">
-                Built with transparency in mind. We leverage incredible
-                open-source libraries like PDF-lib and PDF.js, and believe in
-                the community-driven effort to make powerful tools accessible to
-                everyone.
+                我们秉持透明原则，使用 PDF-lib、PDF.js 等优秀的开源库，并相信社区驱动的力量能够让强大的工具惠及所有人。
               </p>
             </div>
           </div>
         </div>
       </section>
-
       <div class="section-divider"></div>
 
       <section id="cta-section" class="text-center py-16">
         <h2 class="text-3xl font-bold text-white mb-4">
-          Ready to get started?
+          准备好开始了吗？
         </h2>
         <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          Join thousands of users who trust Bentopdf for their daily document
-          needs. Experience the difference that privacy and performance can
-          make.
+          成千上万的用户每天信赖 RayPDF 处理文档工作。亲自体验隐私与性能带来的不同。
         </p>
         <a
           href="index.html#tools-header"
           class="inline-block px-8 py-3 rounded-full bg-gradient-to-b from-indigo-500 to-indigo-600 text-white font-semibold focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-400 hover:shadow-xl hover:shadow-indigo-500/30 transition-all duration-200 transform hover:-translate-y-1"
         >
-          Explore All Tools
+          浏览全部工具
         </a>
       </section>
     </div>
@@ -202,87 +212,59 @@
             <div class="flex items-center justify-center md:justify-start mb-4">
               <img
                 src="images/favicon.svg"
-                alt="Bentopdf Logo"
+                alt="RayPDF 徽标"
                 class="h-10 w-10 mr-3"
               />
-              <span class="text-xl font-bold text-white">BentoPDF</span>
+              <span class="text-xl font-bold text-white">RayPDF</span>
             </div>
             <p class="text-gray-400 text-sm">
-              &copy; 2025 BentoPDF. All rights reserved.
+              &copy; 2025 RayPDF。保留所有权利。
             </p>
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4">Company</h3>
+            <h3 class="font-bold text-white mb-4">关于我们</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
                 <a href="./about.html" class="hover:text-indigo-400"
-                  >About Us</a
+                  >关于我们</a
                 >
               </li>
               <li>
-                <a href="./faq.html" class="hover:text-indigo-400">FAQ</a>
+                <a href="./faq.html" class="hover:text-indigo-400">常见问题</a>
               </li>
               <li>
                 <a href="./contact.html" class="hover:text-indigo-400"
-                  >Contact Us</a
+                  >联系我们</a
                 >
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4">Legal</h3>
+            <h3 class="font-bold text-white mb-4">法律信息</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
                 <a href="./terms.html" class="hover:text-indigo-400"
-                  >Terms and Conditions</a
+                  >使用条款</a
                 >
               </li>
               <li>
                 <a href="./privacy.html" class="hover:text-indigo-400"
-                  >Privacy Policy</a
+                  >隐私政策</a
                 >
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="font-bold text-white mb-4">Follow Us</h3>
-            <div class="flex justify-center md:justify-start space-x-4">
-              <a
-                href="https://www.instagram.com/thebentopdf/"
-                class="text-gray-400 hover:text-indigo-400"
-              >
-                <i data-lucide="instagram"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/company/bentopdf/"
-                class="text-gray-400 hover:text-indigo-400"
-              >
-                <i data-lucide="linkedin"></i>
-              </a>
-              <a
-                href="https://x.com/BentoPDF"
-                class="text-gray-400 hover:text-indigo-400"
-              >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                  />
-                </svg>
-              </a>
-            </div>
+            <h3 class="font-bold text-white mb-4">关注我们</h3>
           </div>
         </div>
       </div>
     </footer>
 
+    <script type="module" src="src/js/static-page.ts"></script>
     <script>
       lucide.createIcons();
     </script>

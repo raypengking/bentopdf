@@ -15,7 +15,7 @@ async function renderPosterizePreview(pageNum: number) {
   if (!posterizeState.pdfJsDoc) return;
 
   posterizeState.currentPage = pageNum;
-  showLoader(`Rendering preview for page ${pageNum}...`);
+  showLoader(`正在渲染第 ${pageNum} 页预览...`);
 
   const canvas = document.getElementById(
     'posterize-preview-canvas'
@@ -143,7 +143,7 @@ export async function setupPosterizeTool() {
 }
 
 export async function posterize() {
-  showLoader('Posterizing PDF...');
+  showLoader('正在制作海报切分 PDF...');
   try {
     const rows =
       parseInt(
@@ -184,7 +184,7 @@ export async function posterize() {
     const pageIndicesToProcess = parsePageRanges(pageRangeInput, totalPages);
 
     if (pageIndicesToProcess.length === 0) {
-      throw new Error('Invalid page range specified.');
+      throw new Error('页码范围无效。');
     }
 
     const tempCanvas = document.createElement('canvas');
@@ -277,10 +277,10 @@ export async function posterize() {
       new Blob([new Uint8Array(newPdfBytes)], { type: 'application/pdf' }),
       'posterized.pdf'
     );
-    showAlert('Success', 'Your PDF has been posterized.');
+    showAlert('成功', 'PDF 已完成海报切分。');
   } catch (e) {
     console.error(e);
-    showAlert('Error', e.message || 'Could not posterize the PDF.');
+    showAlert('错误', e.message || '无法完成海报切分。');
   } finally {
     hideLoader();
   }

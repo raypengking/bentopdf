@@ -24,13 +24,13 @@ export async function changePermissions() {
         0)
   ) {
     showAlert(
-      'Input Required',
-      'You must set a "New Owner Password" to enforce specific permissions or to set a user password.'
+      '需要输入',
+      '若要限制权限或设置用户密码，必须先设置“新的所有者密码”。'
     );
     return;
   }
 
-  showLoader('Preparing to process...');
+  showLoader('正在准备处理...');
 
   try {
     const file = state.files[0];
@@ -46,10 +46,7 @@ export async function changePermissions() {
       // This catch is specific to password errors in pdf.js
       if (e.name === 'PasswordException') {
         hideLoader();
-        showAlert(
-          'Incorrect Password',
-          'The current password you entered is incorrect.'
-        );
+        showAlert('密码错误', '您输入的当前密码不正确。');
         return;
       }
       throw e;
@@ -60,7 +57,7 @@ export async function changePermissions() {
 
     for (let i = 1; i <= numPages; i++) {
       document.getElementById('loader-text').textContent =
-        `Processing page ${i} of ${numPages}...`;
+        `正在处理第 ${i} 页，共 ${numPages} 页...`;
       const page = await pdf.getPage(i);
       const viewport = page.getViewport({ scale: 2.0 });
       const canvas = document.createElement('canvas');
@@ -75,8 +72,7 @@ export async function changePermissions() {
       });
     }
 
-    document.getElementById('loader-text').textContent =
-      'Applying new permissions...';
+    document.getElementById('loader-text').textContent = '正在应用新的权限设置...';
 
     const allowPrinting = (
       document.getElementById('allow-printing') as HTMLInputElement
@@ -136,11 +132,11 @@ export async function changePermissions() {
       const blob = stream.toBlob('application/pdf');
       downloadFile(blob, `permissions-changed-${file.name}`);
       hideLoader();
-      showAlert('Success', 'Permissions changed successfully!');
+      showAlert('成功', '权限已成功更新！');
     });
   } catch (e) {
     console.error(e);
     hideLoader();
-    showAlert('Error', `An unexpected error occurred: ${e.message}`);
+    showAlert('错误', `发生未知错误：${e.message}`);
   }
 }

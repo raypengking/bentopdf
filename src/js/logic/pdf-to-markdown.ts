@@ -3,7 +3,7 @@ import { downloadFile, readFileAsArrayBuffer } from '../utils/helpers.js';
 import { state } from '../state.js';
 
 export async function pdfToMarkdown() {
-  showLoader('Converting to Markdown...');
+  showLoader('正在转换为 Markdown...');
   try {
     const file = state.files[0];
     const arrayBuffer = await readFileAsArrayBuffer(file);
@@ -23,10 +23,7 @@ export async function pdfToMarkdown() {
     downloadFile(blob, file.name.replace(/\.pdf$/i, '.md'));
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Conversion Error',
-      'Failed to convert PDF. It may be image-based or corrupted.'
-    );
+    showAlert('转换失败', '无法转换该 PDF，可能为扫描件或文件已损坏。');
   } finally {
     hideLoader();
   }

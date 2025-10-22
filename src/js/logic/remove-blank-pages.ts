@@ -35,7 +35,7 @@ async function isPageBlank(page: PDFPageProxy, threshold: number) {
 
 async function analyzePages() {
   if (!state.pdfDoc) return;
-  showLoader('Analyzing for blank pages...');
+  showLoader('正在分析空白页...');
 
   const pdfBytes = await state.pdfDoc.save();
   const pdf = await pdfjsLib.getDocument({ data: pdfBytes }).promise;
@@ -86,7 +86,7 @@ async function updateAnalysisUI() {
   }
 
   if (pagesToRemove.length > 0) {
-    analysisText.textContent = `Found ${pagesToRemove.length} blank page(s) to remove: ${pagesToRemove.join(', ')}`;
+    analysisText.textContent = `检测到 ${pagesToRemove.length} 个空白页：${pagesToRemove.join(', ')}`;
     previewContainer.classList.remove('hidden');
 
     for (const pageNum of pagesToRemove) {
@@ -103,12 +103,11 @@ async function updateAnalysisUI() {
       const img = document.createElement('img');
       img.src = thumbCanvas.toDataURL();
       img.className = 'rounded border border-gray-600';
-      img.title = `Page ${pageNum}`;
+      img.title = `第 ${pageNum} 页`;
       thumbnailsContainer.appendChild(img);
     }
   } else {
-    analysisText.textContent =
-      'No blank pages found at this sensitivity level.';
+    analysisText.textContent = '在当前灵敏度下未检测到空白页。';
     previewContainer.classList.remove('hidden');
   }
 }
@@ -121,7 +120,7 @@ export async function setupRemoveBlankPagesTool() {
 }
 
 export async function removeBlankPages() {
-  showLoader('Removing blank pages...');
+  showLoader('正在移除空白页...');
   try {
     const sensitivity = parseInt(
       (document.getElementById('sensitivity-slider') as HTMLInputElement).value
@@ -141,18 +140,15 @@ export async function removeBlankPages() {
     if (indicesToKeep.length === 0) {
       hideLoader();
       showAlert(
-        'No Content Found',
-        'All pages were identified as blank at the current sensitivity setting. No new file was created. Try lowering the sensitivity if you believe this is an error.'
+        '未生成新文件',
+        '在当前灵敏度设置下所有页面均被判定为空白，因此未创建新文件。如有需要请降低灵敏度后重试。'
       );
       return;
     }
 
     if (indicesToKeep.length === state.pdfDoc.getPageCount()) {
       hideLoader();
-      showAlert(
-        'No Pages Removed',
-        'No pages were identified as blank at the current sensitivity level.'
-      );
+      showAlert('无页被删除', '当前灵敏度下未检测到空白页。');
       return;
     }
 
@@ -167,7 +163,7 @@ export async function removeBlankPages() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not remove blank pages.');
+    showAlert('错误', '无法移除空白页。');
   } finally {
     hideLoader();
   }

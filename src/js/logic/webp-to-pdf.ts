@@ -6,10 +6,10 @@ import { PDFDocument as PDFLibDocument } from 'pdf-lib';
 
 export async function webpToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one WebP file.');
+    showAlert('未选择文件', '请至少选择一个 WebP 文件。');
     return;
   }
-  showLoader('Converting WebP to PDF...');
+  showLoader('正在将 WebP 转换为 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
     for (const file of state.files) {
@@ -46,10 +46,7 @@ export async function webpToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert WebP to PDF. Ensure all files are valid WebP images.'
-    );
+    showAlert('错误', 'WebP 转 PDF 失败，请确认文件有效。');
   } finally {
     hideLoader();
   }

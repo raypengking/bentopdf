@@ -26,7 +26,7 @@ function sanitizeImageAsJpeg(imageBytes: any) {
       canvas.toBlob(
         async (jpegBlob) => {
           if (!jpegBlob) {
-            return reject(new Error('Canvas toBlob conversion failed.'));
+            return reject(new Error('Canvas 转换 JPEG 失败。'));
           }
           const arrayBuffer = await jpegBlob.arrayBuffer();
           resolve(new Uint8Array(arrayBuffer));
@@ -39,11 +39,7 @@ function sanitizeImageAsJpeg(imageBytes: any) {
 
     img.onerror = () => {
       URL.revokeObjectURL(imageUrl);
-      reject(
-        new Error(
-          'The provided file could not be loaded as an image. It may be corrupted.'
-        )
-      );
+      reject(new Error('无法将该文件加载为图像，可能已损坏。'));
     };
 
     img.src = imageUrl;
@@ -52,10 +48,10 @@ function sanitizeImageAsJpeg(imageBytes: any) {
 
 export async function jpgToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one JPG file.');
+    showAlert('未选择文件', '请至少选择一个 JPG 文件。');
     return;
   }
-  showLoader('Creating PDF from JPGs...');
+  showLoader('正在将 JPG 生成 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
 
@@ -68,19 +64,18 @@ export async function jpgToPdf() {
       } catch (e) {
         // @ts-expect-error TS(2554) FIXME: Expected 2 arguments, but got 1.
         showAlert(
-          `Direct JPG embedding failed for ${file.name}, attempting to sanitize...`
+          '提示',
+          `直接嵌入 JPG 失败：${file.name}，正在尝试修复后重试...`
         );
         try {
           const sanitizedBytes = await sanitizeImageAsJpeg(originalBytes);
           jpgImage = await pdfDoc.embedJpg(sanitizedBytes as Uint8Array);
         } catch (fallbackError) {
           console.error(
-            `Failed to process ${file.name} after sanitization:`,
+            `修复后仍无法处理 ${file.name}：`,
             fallbackError
           );
-          throw new Error(
-            `Could not process "${file.name}". The file may be corrupted.`
-          );
+          throw new Error(`无法处理“${file.name}”，文件可能已损坏。`);
         }
       }
 
@@ -100,7 +95,7 @@ export async function jpgToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Conversion Error', e.message);
+    showAlert('转换失败', e.message);
   } finally {
     hideLoader();
   }

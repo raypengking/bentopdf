@@ -6,10 +6,10 @@ import { PDFDocument as PDFLibDocument } from 'pdf-lib';
 
 export async function heicToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one HEIC file.');
+    showAlert('未选择文件', '请至少选择一个 HEIC 文件。');
     return;
   }
-  showLoader('Converting HEIC to PDF...');
+  showLoader('正在将 HEIC 转换为 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
     for (const file of state.files) {
@@ -38,10 +38,7 @@ export async function heicToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert HEIC to PDF. One of the files may be invalid or unsupported.'
-    );
+    showAlert('错误', 'HEIC 转 PDF 失败，可能包含无效或不支持的文件。');
   } finally {
     hideLoader();
   }

@@ -6,7 +6,7 @@ import UTIF from 'utif';
 import * as pdfjsLib from 'pdfjs-dist';
 
 export async function pdfToTiff() {
-  showLoader('Converting PDF to TIFF...');
+  showLoader('正在将 PDF 转换为 TIFF...');
   try {
     const pdf = await pdfjsLib.getDocument(
       await readFileAsArrayBuffer(state.files[0])
@@ -41,10 +41,7 @@ export async function pdfToTiff() {
     downloadFile(zipBlob, 'converted_tiff_images.zip');
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert PDF to TIFF. The file might be corrupted.'
-    );
+    showAlert('错误', 'PDF 转 TIFF 失败，文件可能已损坏。');
   } finally {
     hideLoader();
   }

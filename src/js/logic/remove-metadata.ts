@@ -3,7 +3,7 @@ import { downloadFile } from '../utils/helpers.js';
 import { state } from '../state.js';
 
 export async function removeMetadata() {
-  showLoader('Removing all metadata...');
+  showLoader('正在移除全部元数据...');
   try {
     const infoDict = state.pdfDoc.getInfoDict();
 
@@ -26,7 +26,7 @@ export async function removeMetadata() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while trying to remove metadata.');
+    showAlert('错误', '移除元数据时发生错误。');
   } finally {
     hideLoader();
   }
