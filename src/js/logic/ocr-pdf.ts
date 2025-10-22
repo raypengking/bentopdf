@@ -75,7 +75,7 @@ function updateProgress(status: any, progress: any) {
   // Tesseract's progress can sometimes exceed 1, so we cap it at 100%.
   progressBar.style.width = `${Math.min(100, progress * 100)}%`;
 
-  const logMessage = `Status: ${status}`;
+  const logMessage = `状态：${status}`;
   progressLog.textContent += logMessage + '\n';
   progressLog.scrollTop = progressLog.scrollHeight;
 }
@@ -92,10 +92,7 @@ async function runOCR() {
   const whitelist = document.getElementById('ocr-whitelist').value;
 
   if (selectedLangs.length === 0) {
-    showAlert(
-      'No Languages Selected',
-      'Please select at least one language for OCR.'
-    );
+    showAlert('未选择语言', '请至少选择一种 OCR 语言。');
     return;
   }
   const langString = selectedLangs.join('+');
@@ -129,7 +126,7 @@ async function runOCR() {
 
     for (let i = 1; i <= pdf.numPages; i++) {
       updateProgress(
-        `Processing page ${i} of ${pdf.numPages}`,
+        `正在处理第 ${i} 页，共 ${pdf.numPages} 页`,
         (i - 1) / pdf.numPages
       );
       const page = await pdf.getPage(i);
@@ -261,10 +258,7 @@ async function runOCR() {
       });
   } catch (e) {
     console.error(e);
-    showAlert(
-      'OCR Error',
-      'An error occurred during the OCR process. The worker may have failed to load. Please try again.'
-    );
+    showAlert('OCR 错误', '执行 OCR 时发生错误，可能无法加载识别引擎，请重试。');
     document.getElementById('ocr-options').classList.remove('hidden');
     document.getElementById('ocr-progress').classList.add('hidden');
   }
@@ -299,7 +293,7 @@ export function setupOcrTool() {
       // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'Element'.
       .map((cb) => tesseractLanguages[cb.value]);
     selectedLangsDisplay.textContent =
-      selected.length > 0 ? selected.join(', ') : 'None';
+      selected.length > 0 ? selected.join(', ') : '未选择';
     // @ts-expect-error TS(2339) FIXME: Property 'disabled' does not exist on type 'HTMLEl... Remove this comment to see the full error message
     processBtn.disabled = selected.length === 0;
   });

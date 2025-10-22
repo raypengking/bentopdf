@@ -1,5 +1,5 @@
-# BentoPDF
-**BentoPDF** is a powerful, privacy-first, client-side PDF toolkit that allows you to manipulate, edit, merge, and process PDF files directly in your browser. No server-side processing is required, ensuring your files remain secure and private.
+# RayPDF
+**RayPDF** is a powerful, privacy-first, client-side PDF toolkit that allows you to manipulate, edit, merge, and process PDF files directly in your browser. No server-side processing is required, ensuring your files remain secure and private.
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/bentopdf/bentopdf) [![Ko-fi](https://img.shields.io/badge/Buy%20me%20a%20Coffee-yellow?logo=kofi&style=flat-square)](https://ko-fi.com/alio0) ![GitHub Stars](https://img.shields.io/github/stars/alam00000/bentopdf?style=social)
 
@@ -9,18 +9,18 @@
 
 ---
 
-## ✨ Why BentoPDF?
+## ✨ Why RayPDF?
 
 - **Privacy First**: All processing happens in your browser. Your files are never uploaded to a server, guaranteeing 100% privacy.
 - **No Limits**: Manipulate as many files as you want, as often you want. There are no restrictions or upload limits.
-- **High Performance**: Built with modern web technologies, BentoPDF is fast and efficient, handling even large PDF files with ease.
-- **Completely Free**: BentoPDF is a free and open-source tool for everyone.
+- **High Performance**: Built with modern web technologies, RayPDF is fast and efficient, handling even large PDF files with ease.
+- **Completely Free**: RayPDF is a free and open-source tool for everyone.
 
 ---
 
 ## 🛠️ Features / Tools Supported
 
-BentoPDF offers a comprehensive suite of tools to handle all your PDF needs.
+RayPDF offers a comprehensive suite of tools to handle all your PDF needs.
 
 ### Organize & Manage PDFs
 
@@ -85,7 +85,7 @@ BentoPDF offers a comprehensive suite of tools to handle all your PDF needs.
 
 ## 🚀 Getting Started
 
-You can run BentoPDF locally for development or personal use.
+You can run RayPDF locally for development or personal use.
 
 ### Prerequisites
 
@@ -95,7 +95,7 @@ You can run BentoPDF locally for development or personal use.
 
 ### 🚀 Quick Start with Docker
 
-You can run BentoPDF directly from Docker Hub without cloning the repository:
+You can run RayPDF directly from Docker Hub without cloning the repository:
 
 ```bash
 docker run -p 3000:80 bentopdf/bentopdf:latest
@@ -103,7 +103,7 @@ docker run -p 3000:80 bentopdf/bentopdf:latest
 
 Open your browser at: http://localhost:3000
 
-This is the fastest way to try BentoPDF without setting up a development environment.
+This is the fastest way to try RayPDF without setting up a development environment.
 
 ### 🚀 Run with Docker Compose (Recommended)
 
@@ -181,7 +181,7 @@ The application will be available at `http://localhost:3000`.
 
 ## 🛠️ Tech Stack & Background
 
-BentoPDF was originally built using **HTML**, **CSS**, and **vanilla JavaScript**. As the project grew, it was migrated to a modern stack for better maintainability and scalability:
+RayPDF was originally built using **HTML**, **CSS**, and **vanilla JavaScript**. As the project grew, it was migrated to a modern stack for better maintainability and scalability:
 
 - **Vite**: A fast build tool for modern web development.
 - **TypeScript**: For type safety and an improved developer experience.
@@ -223,7 +223,7 @@ Have an idea for a new tool or an improvement? [Open an issue](https://github.co
 
 ## Special Thanks
 
-BentoPDF wouldn't be possible without the amazing open-source tools and libraries that power it. We'd like to extend our heartfelt thanks to the creators and maintainers of:
+RayPDF wouldn't be possible without the amazing open-source tools and libraries that power it. We'd like to extend our heartfelt thanks to the creators and maintainers of:
 
 - **[PDFLib.js](https://pdf-lib.js.org/)** – For enabling powerful client-side PDF manipulation.
 - **[PDF.js](https://mozilla.github.io/pdf.js/)** – For the robust PDF rendering engine in the browser.

@@ -57,7 +57,7 @@ export function analyzeAndDisplayDimensions() {
       pageNum: index + 1,
       width, // Store raw width in points
       height, // Store raw height in points
-      orientation: width > height ? 'Landscape' : 'Portrait',
+      orientation: width > height ? '横向' : '纵向',
       standardSize: getStandardPageName(width, height),
     });
   });

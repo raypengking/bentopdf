@@ -251,7 +251,7 @@ function createFormFieldHtml(field: any): HTMLElement {
     const p = document.createElement('p');
     p.className = 'text-sm text-gray-400';
     if (field instanceof PDFSignature) {
-      p.textContent = 'Signature field: Not supported for direct editing.';
+      p.textContent = '签名字段：暂不支持直接编辑。';
     } else if (field instanceof PDFButton) {
       p.textContent = `Button: ${labelText}`;
     } else {
@@ -268,7 +268,7 @@ function createFormFieldHtml(field: any): HTMLElement {
 export async function setupFormFiller() {
   if (!state.pdfDoc) return;
 
-  showLoader('Analyzing form fields...');
+  showLoader('正在分析表单字段...');
   const formContainer = document.getElementById('form-fields-container');
   const processBtn = document.getElementById('process-btn');
 
@@ -287,7 +287,7 @@ export async function setupFormFiller() {
 
     if (fields.length === 0) {
       formContainer.innerHTML =
-        '<p class="text-center text-gray-400">This PDF contains no form fields.</p>';
+        '<p class="text-center text-gray-400">该 PDF 不包含表单字段。</p>';
       processBtn.classList.add('hidden');
     } else {
       fields.forEach((field: any) => {
@@ -344,16 +344,13 @@ export async function setupFormFiller() {
     if (formFillerOptions) formFillerOptions.classList.remove('hidden');
   } catch (e) {
     console.error('Critical error setting up form filler:', e);
-    showAlert(
-      'Error',
-      'Failed to read PDF form data. The file may be corrupt or not a valid form.'
-    );
+    showAlert('错误', '无法读取 PDF 表单数据，文件可能损坏或不是有效表单。');
     hideLoader();
   }
 }
 
 export async function processAndDownloadForm() {
-  showLoader('Applying form data...');
+  showLoader('正在应用表单数据...');
   try {
     const form = state.pdfDoc.getForm();
 
@@ -393,10 +390,10 @@ export async function processAndDownloadForm() {
       'filled-form.pdf'
     );
 
-    showAlert('Success', 'Form has been filled and downloaded.');
+    showAlert('成功', '表单已填好并完成下载。');
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Failed to save the filled form.');
+    showAlert('错误', '保存已填写表单时发生错误。');
   } finally {
     hideLoader();
   }

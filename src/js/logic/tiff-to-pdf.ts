@@ -6,10 +6,10 @@ import { decode } from 'tiff';
 
 export async function tiffToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one TIFF file.');
+    showAlert('未选择文件', '请至少选择一个 TIFF 文件。');
     return;
   }
-  showLoader('Converting TIFF to PDF...');
+  showLoader('正在将 TIFF 转换为 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
     for (const file of state.files) {
@@ -23,7 +23,7 @@ export async function tiffToPdf() {
         const ctx = canvas.getContext('2d');
 
         if (!ctx) {
-          throw new Error('Failed to get canvas context');
+          throw new Error('无法获取画布上下文。');
         }
 
         const imageData = ctx.createImageData(ifd.width, ifd.height);
@@ -85,10 +85,7 @@ export async function tiffToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert TIFF to PDF. One of the files may be invalid or corrupted.'
-    );
+      showAlert('错误', 'TIFF 转 PDF 失败，可能有无效或损坏的文件。');
   } finally {
     hideLoader();
   }

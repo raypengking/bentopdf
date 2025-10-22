@@ -29,7 +29,7 @@ export function setupRemoveAnnotationsTool() {
 }
 
 export async function removeAnnotations() {
-  showLoader('Removing annotations...');
+  showLoader('正在移除批注...');
   try {
     const totalPages = state.pdfDoc.getPageCount();
     let targetPageIndices = [];
@@ -44,7 +44,7 @@ export async function removeAnnotations() {
     } else {
       // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
       const rangeInput = document.getElementById('page-range-input').value;
-      if (!rangeInput.trim()) throw new Error('Please enter a page range.');
+      if (!rangeInput.trim()) throw new Error('请输入页码范围。');
       const ranges = rangeInput.split(',');
       for (const range of ranges) {
         const trimmedRange = range.trim();
@@ -69,7 +69,7 @@ export async function removeAnnotations() {
     }
 
     if (targetPageIndices.length === 0)
-      throw new Error('No valid pages were selected.');
+      throw new Error('未选择有效的页面。');
 
     const typesToRemove = new Set(
       Array.from(document.querySelectorAll('.annot-checkbox:checked')).map(
@@ -78,7 +78,7 @@ export async function removeAnnotations() {
     );
 
     if (typesToRemove.size === 0)
-      throw new Error('Please select at least one annotation type to remove.');
+      throw new Error('请至少选择一种批注类型再进行移除。');
 
     const pages = state.pdfDoc.getPages();
 
@@ -116,10 +116,7 @@ export async function removeAnnotations() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      e.message || 'Could not remove annotations. Please check your page range.'
-    );
+    showAlert('错误', e.message || '无法移除批注，请检查页码范围。');
   } finally {
     hideLoader();
   }

@@ -18,7 +18,7 @@ async function renderVisualSelector() {
 
   container.textContent = '';
 
-  showLoader('Rendering page previews...');
+  showLoader('正在生成页面预览...');
   try {
     const pdfData = await state.pdfDoc.save();
     // @ts-expect-error TS(2304) FIXME: Cannot find name 'pdfjsLib'.
@@ -46,7 +46,7 @@ async function renderVisualSelector() {
       img.className = 'rounded-md w-full h-auto';
       const p = document.createElement('p');
       p.className = 'text-center text-xs mt-1 text-gray-300';
-      p.textContent = `Page ${i}`;
+      p.textContent = `第 ${i} 页`;
       wrapper.append(img, p);
 
       const handleSelection = (e: any) => {
@@ -74,7 +74,7 @@ async function renderVisualSelector() {
     }
   } catch (error) {
     console.error('Error rendering visual selector:', error);
-    showAlert('Error', 'Failed to render page previews.');
+    showAlert('错误', '无法生成页面预览。');
     // 4. ADDED: Reset the flag on error so the user can try again.
     visualSelectorRendered = false;
   } finally {
@@ -130,7 +130,7 @@ export async function split() {
     (document.getElementById('download-as-zip') as HTMLInputElement)?.checked ||
     false;
 
-  showLoader('Splitting PDF...');
+  showLoader('正在拆分 PDF...');
 
   try {
     const totalPages = state.pdfDoc.getPageCount();
@@ -140,7 +140,7 @@ export async function split() {
       case 'range':
         // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
         const pageRangeInput = document.getElementById('page-range').value;
-        if (!pageRangeInput) throw new Error('Please enter a page range.');
+        if (!pageRangeInput) throw new Error('请输入页码范围。');
         const ranges = pageRangeInput.split(',');
         for (const range of ranges) {
           const trimmedRange = range.trim();
@@ -167,7 +167,7 @@ export async function split() {
         const choiceElement = document.querySelector(
           'input[name="even-odd-choice"]:checked'
         );
-        if (!choiceElement) throw new Error('Please select even or odd pages.');
+        if (!choiceElement) throw new Error('请选择保留奇数页或偶数页。');
         // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'Element'.
         const choice = choiceElement.value;
         for (let i = 0; i < totalPages; i++) {
@@ -189,14 +189,14 @@ export async function split() {
 
     const uniqueIndices = [...new Set(indicesToExtract)];
     if (uniqueIndices.length === 0) {
-      throw new Error('No pages were selected for splitting.');
+      throw new Error('未选择任何要拆分的页面。');
     }
 
     if (
       splitMode === 'all' ||
       (['range', 'visual'].includes(splitMode) && downloadAsZip)
     ) {
-      showLoader('Creating ZIP file...');
+      showLoader('正在创建 ZIP 文件...');
       const zip = new JSZip();
       for (const index of uniqueIndices) {
         const newPdf = await PDFLibDocument.create();
@@ -229,10 +229,7 @@ export async function split() {
     }
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      e.message || 'Failed to split PDF. Please check your selection.'
-    );
+    showAlert('错误', e.message || '拆分失败，请检查选择。');
   } finally {
     hideLoader();
   }

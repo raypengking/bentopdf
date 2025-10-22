@@ -34,7 +34,7 @@ export async function fixDimensions() {
     (document.getElementById('background-color') as HTMLInputElement).value
   );
 
-  showLoader('Standardizing pages...');
+  showLoader('正在统一页面尺寸...');
   try {
     let targetWidth, targetHeight;
 
@@ -107,7 +107,7 @@ export async function fixDimensions() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'An error occurred while standardizing pages.');
+    showAlert('错误', '统一页面尺寸时发生错误。');
   } finally {
     hideLoader();
   }
