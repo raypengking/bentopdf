@@ -1,6 +1,7 @@
 import { categories } from './config/tools.js';
 import { dom, switchView, hideAlert } from './ui.js';
 import { setupToolInterface } from './handlers/toolSelectionHandler.js';
+import { initAdCarousel } from './ad-carousel.js';
 import { createIcons, icons } from 'lucide';
 import * as pdfjsLib from 'pdfjs-dist';
 import '../css/styles.css';
@@ -10,6 +11,8 @@ const init = () => {
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url
   ).toString();
+
+  initAdCarousel();
 
   dom.toolGrid.textContent = '';
 
