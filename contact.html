@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - BentoPDF</title>
+    <title>联系我们 - RayPDF</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" type="image/png" href="images/favicon.svg" />
     <link href="/src/css/styles.css" rel="stylesheet" />
@@ -19,44 +19,74 @@
           >
             <img
               src="images/favicon.svg"
-              alt="Bento PDF Logo"
+              alt="RayPDF 徽标"
               class="h-8 w-8 mr-2"
             />
-            <span class="text-white font-bold text-xl"> BentoPDF</span>
+            <span class="text-white font-bold text-xl"> RayPDF</span>
           </a>
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="./about.html" class="nav-link">About</a>
-            <a href="./contact.html" class="nav-link">Contact</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="./about.html" class="nav-link">关于</a>
+            <a href="./contact.html" class="nav-link">联系</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
 
           <div class="md:hidden flex items-center gap-4">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
         </div>
       </div>
     </nav>
 
+    <section class="ad-banner-container border-b border-indigo-900/30">
+      <div class="container mx-auto px-4">
+        <div
+          class="ad-carousel"
+          role="region"
+          aria-label="合作伙伴广告轮播"
+        >
+          <button
+            id="ad-carousel-prev"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="上一条广告"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div class="ad-carousel-viewport" id="ad-carousel-viewport">
+            <ul class="ad-carousel-track" id="ad-carousel-track"></ul>
+          </div>
+          <button
+            id="ad-carousel-next"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="下一条广告"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="ad-carousel-dots" id="ad-carousel-dots"></div>
+      </div>
+    </section>
+
     <div id="app" class="min-h-screen container mx-auto p-4 md:p-8">
       <section id="contact-hero" class="text-center py-16 md:py-24">
         <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
-          Get in Touch
+          联系我们
         </h1>
         <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-          We'd love to hear from you. Whether you have a question, feedback, or
-          a feature request, please don't hesitate to reach out.
+          我们很乐意听到你的声音。无论你有任何问题、反馈或功能建议，都欢迎与我们联系。
         </p>
       </section>
 
       <div class="max-w-2xl mx-auto text-center py-8">
         <p class="text-lg text-gray-400">
-          You can reach us directly by email at:
+          你可以直接发送电子邮件至：
           <a
-            href="mailto:contact@bentopdf.com"
+            href="mailto:lp370304@gmail.com"
             class="text-indigo-400 underline hover:text-indigo-300"
-            >contact@bentopdf.com</a
+            >lp370304@gmail.com</a
           >
         </p>
       </div>
@@ -71,47 +101,47 @@
             <div class="flex items-center justify-center md:justify-start mb-4">
               <img
                 src="images/favicon.svg"
-                alt="Bento PDF Logo"
+                alt="RayPDF 徽标"
                 class="h-10 w-10 mr-3"
               />
-              <span class="text-xl font-bold text-white">Bentopdf</span>
+              <span class="text-xl font-bold text-white">RayPDF</span>
             </div>
             <p class="text-gray-400 text-sm">
-              &copy; 2025 Bentopdf. All rights reserved.
+              &copy; 2025 RayPDF。保留所有权利。
             </p>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-4">Company</h3>
+            <h3 class="font-bold text-white mb-4">关于我们</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
-                <a href="about.html" class="hover:text-indigo-400">About Us</a>
+                <a href="about.html" class="hover:text-indigo-400">关于我们</a>
               </li>
-              <li><a href="faq.html" class="hover:text-indigo-400">FAQ</a></li>
               <li>
-                <a href="contact.html" class="hover:text-indigo-400"
-                  >Contact Us</a
-                >
+                <a href="faq.html" class="hover:text-indigo-400">常见问题</a>
+              </li>
+              <li>
+                <a href="contact.html" class="hover:text-indigo-400">联系我们</a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-4">Legal</h3>
+            <h3 class="font-bold text-white mb-4">法律信息</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
                 <a href="./terms.html" class="hover:text-indigo-400"
-                  >Terms and Conditions</a
+                  >使用条款</a
                 >
               </li>
               <li>
                 <a href="./privacy.html" class="hover:text-indigo-400"
-                  >Privacy Policy</a
+                  >隐私政策</a
                 >
               </li>
             </ul>
           </div>
           <div>
             <div>
-              <h3 class="font-bold text-white mb-4">Follow Us</h3>
+              <h3 class="font-bold text-white mb-4">关注我们</h3>
               <div class="flex justify-center md:justify-start space-x-4">
                 <a
                   href="https://www.instagram.com/thebentopdf/"
@@ -126,7 +156,7 @@
                   <i data-lucide="linkedin"></i>
                 </a>
                 <a
-                  href="https://x.com/BentoPDF"
+                  href="https://x.com/RayPDF"
                   class="text-gray-400 hover:text-indigo-400"
                 >
                   <svg
@@ -147,6 +177,7 @@
       </div>
     </footer>
 
+    <script type="module" src="src/js/static-page.ts"></script>
     <script>
       lucide.createIcons();
     </script>

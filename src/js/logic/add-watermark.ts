@@ -81,7 +81,7 @@ export async function addWatermark() {
     ) as HTMLInputElement
   ).value;
 
-  showLoader('Adding watermark...');
+  showLoader('正在添加水印...');
 
   try {
     const pages = state.pdfDoc.getPages();
@@ -95,7 +95,7 @@ export async function addWatermark() {
         document.getElementById('image-watermark-input') as HTMLInputElement
       ).files?.[0];
       if (!imageFile)
-        throw new Error('Please select an image file for the watermark.');
+        throw new Error('请选择用于水印的图片文件。');
 
       const imageBytes = await readFileAsArrayBuffer(imageFile);
       if (imageFile.type === 'image/png') {
@@ -103,9 +103,7 @@ export async function addWatermark() {
       } else if (imageFile.type === 'image/jpeg') {
         watermarkAsset = await state.pdfDoc.embedJpg(imageBytes);
       } else {
-        throw new Error(
-          'Unsupported Image. Please use a PNG or JPG for the watermark.'
-        );
+        throw new Error('不支持的图片格式，请使用 PNG 或 JPG 作为水印。');
       }
     }
 
@@ -116,7 +114,7 @@ export async function addWatermark() {
         // @ts-expect-error TS(2339) FIXME: Property 'value' does not exist on type 'HTMLEleme... Remove this comment to see the full error message
         const text = document.getElementById('watermark-text').value;
         if (!text.trim())
-          throw new Error('Please enter text for the watermark.');
+          throw new Error('请输入水印文本。');
 
         const fontSize =
           parseInt(
@@ -177,10 +175,7 @@ export async function addWatermark() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      e.message || 'Could not add the watermark. Please check your inputs.'
-    );
+    showAlert('错误', e.message || '无法添加水印，请检查输入设置。');
   } finally {
     hideLoader();
   }

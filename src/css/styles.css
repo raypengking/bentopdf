@@ -158,6 +158,93 @@ footer a {
   font-weight: 500;
 }
 
+.ad-banner-container {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(15, 23, 42, 0.9));
+}
+
+.ad-carousel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 0;
+}
+
+.ad-carousel-viewport {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.ad-carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.ad-carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+}
+
+.ad-carousel-btn {
+  background-color: rgba(17, 24, 39, 0.75);
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  color: #e0e7ff;
+  border-radius: 9999px;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.ad-carousel-btn:hover,
+.ad-carousel-btn:focus-visible {
+  background-color: rgba(79, 70, 229, 0.4);
+  border-color: rgba(129, 140, 248, 0.6);
+  transform: translateY(-1px);
+}
+
+.ad-carousel-btn span {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.ad-carousel-dots {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ad-carousel-dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background-color: rgba(148, 163, 184, 0.55);
+  border: none;
+  padding: 0;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.ad-carousel-dot.active,
+.ad-carousel-dot:focus-visible {
+  background-color: #6366f1;
+  transform: scale(1.2);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .ad-carousel {
+    gap: 0.5rem;
+  }
+
+  .ad-carousel-btn {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+}
+
 .cta-button {
   background-color: #4f46e5;
   /* indigo-600 */

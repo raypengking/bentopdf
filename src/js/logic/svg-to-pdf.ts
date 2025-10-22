@@ -23,21 +23,21 @@ async function convertImageToPngBytes(file: any) {
         const pngBytes = await pngBlob.arrayBuffer();
         resolve(pngBytes);
       };
-      img.onerror = () => reject(new Error('Failed to load image.'));
+      img.onerror = () => reject(new Error('图片加载失败。'));
       // @ts-expect-error TS(2322) FIXME: Type 'string | ArrayBuffer' is not assignable to t... Remove this comment to see the full error message
       img.src = e.target.result;
     };
-    reader.onerror = () => reject(new Error('Failed to read file.'));
+    reader.onerror = () => reject(new Error('文件读取失败。'));
     reader.readAsDataURL(file);
   });
 }
 
 export async function svgToPdf() {
   if (state.files.length === 0) {
-    showAlert('No Files', 'Please select at least one SVG file.');
+    showAlert('未选择文件', '请至少选择一个 SVG 文件。');
     return;
   }
-  showLoader('Converting SVG to PDF...');
+  showLoader('正在将 SVG 转换为 PDF...');
   try {
     const pdfDoc = await PDFLibDocument.create();
     for (const file of state.files) {
@@ -58,10 +58,7 @@ export async function svgToPdf() {
     );
   } catch (e) {
     console.error(e);
-    showAlert(
-      'Error',
-      'Failed to convert SVG to PDF. One of the files may be invalid.'
-    );
+    showAlert('错误', 'SVG 转 PDF 失败，可能包含无效文件。');
   } finally {
     hideLoader();
   }

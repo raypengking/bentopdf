@@ -43,7 +43,7 @@ async function renderPage(
 async function renderBothPages() {
   if (!state.pdfDoc1 || !state.pdfDoc2) return;
 
-  showLoader(`Loading page ${state.currentPage}...`);
+  showLoader(`正在加载第 ${state.currentPage} 页...`);
 
   const canvas1 = document.getElementById('canvas-compare-1');
   const canvas2 = document.getElementById('canvas-compare-2');
@@ -98,7 +98,7 @@ async function setupFileInput(inputId: any, docKey: any, displayId: any) {
 
   const handleFile = async (file: any) => {
     if (!file || file.type !== 'application/pdf')
-      return showAlert('Invalid File', 'Please select a valid PDF file.');
+      return showAlert('文件无效', '请选择有效的 PDF 文件。');
 
     const displayDiv = document.getElementById(displayId);
     displayDiv.textContent = '';
@@ -120,7 +120,7 @@ async function setupFileInput(inputId: any, docKey: any, displayId: any) {
     createIcons({ icons });
 
     try {
-      showLoader(`Loading ${file.name}...`);
+      showLoader(`正在加载 ${file.name}...`);
       const pdfBytes = await readFileAsArrayBuffer(file);
       // @ts-expect-error TS(2304) FIXME: Cannot find name 'pdfjsLib'.
       state[docKey] = await pdfjsLib.getDocument(pdfBytes).promise;
@@ -131,10 +131,7 @@ async function setupFileInput(inputId: any, docKey: any, displayId: any) {
         await renderBothPages();
       }
     } catch (e) {
-      showAlert(
-        'Error',
-        'Could not load PDF. It may be corrupt or password-protected.'
-      );
+      showAlert('错误', '无法加载 PDF，文件可能损坏或受密码保护。');
       console.error(e);
     } finally {
       hideLoader();

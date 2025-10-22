@@ -5,10 +5,10 @@ import { PDFDocument as PDFLibDocument } from 'pdf-lib';
 
 export async function invertColors() {
   if (!state.pdfDoc) {
-    showAlert('Error', 'PDF not loaded.');
+    showAlert('错误', '尚未加载 PDF。');
     return;
   }
-  showLoader('Inverting PDF colors...');
+  showLoader('正在反转 PDF 颜色...');
   try {
     const newPdfDoc = await PDFLibDocument.create();
     const pdfBytes = await state.pdfDoc.save();
@@ -58,7 +58,7 @@ export async function invertColors() {
     );
   } catch (e) {
     console.error(e);
-    showAlert('Error', 'Could not invert PDF colors.');
+    showAlert('错误', '无法反转 PDF 颜色。');
   } finally {
     hideLoader();
   }

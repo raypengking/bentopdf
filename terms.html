@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terms and Conditions - Bentopdf</title>
+    <title>使用条款 - RayPDF</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,145 +20,126 @@
           >
             <img
               src="images/favicon.svg"
-              alt="BentoPDF Logo"
+              alt="RayPDF 徽标"
               class="h-8 w-8 mr-2"
             />
-            <span class="text-white font-bold text-xl">BentoPDF</span>
+            <span class="text-white font-bold text-xl">RayPDF</span>
           </a>
           <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="./about.html" class="nav-link">About</a>
-            <a href="./contact.html" class="nav-link">Contact</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="./about.html" class="nav-link">关于</a>
+            <a href="./contact.html" class="nav-link">联系</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
 
           <div class="md:hidden flex items-center gap-4">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="index.html#tools-header" class="nav-link">All Tools</a>
+            <a href="index.html" class="nav-link">首页</a>
+            <a href="index.html#tools-header" class="nav-link">全部工具</a>
           </div>
         </div>
       </div>
     </nav>
+    <section class="ad-banner-container border-b border-indigo-900/30">
+      <div class="container mx-auto px-4">
+        <div
+          class="ad-carousel"
+          role="region"
+          aria-label="合作伙伴广告轮播"
+        >
+          <button
+            id="ad-carousel-prev"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="上一条广告"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+          <div class="ad-carousel-viewport" id="ad-carousel-viewport">
+            <ul class="ad-carousel-track" id="ad-carousel-track"></ul>
+          </div>
+          <button
+            id="ad-carousel-next"
+            type="button"
+            class="ad-carousel-btn"
+            aria-label="下一条广告"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="ad-carousel-dots" id="ad-carousel-dots"></div>
+      </div>
+    </section>
     <div id="app" class="container mx-auto p-4 md:p-8">
       <section class="max-w-4xl mx-auto py-12">
         <h1 class="text-4xl md:text-5xl font-bold text-center text-white mb-4">
-          Terms and Conditions
+          使用条款
         </h1>
         <p class="text-center text-gray-500">
-          Last Updated: September 14, 2025
+          最近更新：2025 年 9 月 14 日
         </p>
 
         <div class="legal-content mt-12">
-          <h2>1. Acceptance of Terms</h2>
+          <h2>1. 接受条款</h2>
           <p>
-            By accessing and using Bentopdf (the "Service"), you accept and
-            agree to be bound by the terms and provision of this agreement. If
-            you do not agree to abide by these terms, please do not use this
-            service.
+            访问并使用 RayPDF（以下简称“本服务”），即表示你接受并同意遵守本协议的条款与规定。如果你不同意这些条款，请不要使用本服务。
           </p>
 
-          <h2>2. Description of Service</h2>
+          <h2>2. 服务描述</h2>
           <p>
-            Bentopdf provides a suite of client-side tools for processing and
-            manipulating Portable Document Format (PDF) files. All operations
-            performed by the Service are executed locally within your web
-            browser.
-            <strong
-              >No files or data are uploaded to or stored on our
-              servers.</strong
-            >
+            RayPDF 提供一系列客户端 PDF 处理与编辑工具。所有操作都在你的浏览器本地完成，<strong>不会将任何文件或数据上传至我们的服务器</strong>。
           </p>
 
-          <h2>3. User Conduct and Responsibilities</h2>
+          <h2>3. 用户行为与责任</h2>
           <p>
-            You are solely responsible for the content of the files you process
-            with our Service. You agree not to use the Service for any unlawful
-            purpose, including but not limited to:
+            你需自行对使用本服务处理的文件内容负责。你同意不将本服务用于任何违法目的，包括但不限于：
           </p>
           <ul>
-            <li>
-              Processing any material that infringes on the copyright,
-              trademark, or intellectual property rights of others.
-            </li>
-            <li>
-              Processing any material that is defamatory, libelous, obscene, or
-              otherwise illegal.
-            </li>
-            <li>
-              Attempting to reverse-engineer, decompile, or otherwise disrupt
-              the functionality of the Service.
-            </li>
+            <li>处理侵犯他人版权、商标或其他知识产权的资料。</li>
+            <li>处理诽谤、淫秽或其他非法内容。</li>
+            <li>试图逆向工程、反编译或以其他方式破坏本服务的功能。</li>
           </ul>
 
-          <h2>4. Disclaimer of Warranties</h2>
+          <h2>4. 免责声明</h2>
           <p>
-            The Service is provided "as is" and "as available" without any
-            warranties of any kind, express or implied. We do not warrant that
-            the service will be error-free, uninterrupted, or that the results
-            obtained from using the tools will be accurate, complete, or
-            reliable. You acknowledge that you use the Service at your own risk.
+            本服务按“现状”与“可用性”提供，不附带任何明示或默示担保。我们不保证服务无错误、不中断，也不保证通过工具获得的结果绝对准确、完整或可靠。你需自行承担使用本服务的风险。
           </p>
           <p>
-            Specifically, we do not guarantee that file conversions,
-            compressions, or modifications will be perfect. Data loss or
-            corruption, while unlikely, is a possibility. It is your
-            responsibility to maintain backups of your original files.
+            尤其是，我们不保证文件转换、压缩或修改一定完美无缺。虽然概率较低，但数据丢失或损坏仍有可能发生。请务必自行保留原始文件备份。
           </p>
 
-          <h2>5. Limitation of Liability</h2>
+          <h2>5. 责任限制</h2>
           <p>
-            To the fullest extent permitted by applicable law, in no event shall
-            Bentopdf, its developers, or its affiliates be liable for any
-            indirect, incidental, special, consequential, or punitive damages,
-            including but not limited to, loss of profits, data, use, goodwill,
-            or other intangible losses, resulting from:
+            在适用法律允许的最大范围内，RayPDF、其开发者或关联方在任何情况下均不对以下造成的任何间接、附带、特殊、结果性或惩罚性损害负责，包括但不限于利润、数据、使用、商誉或其他无形损失：
           </p>
           <ul>
-            <li>
-              Your access to or use of or inability to access or use the
-              Service.
-            </li>
-            <li>Any conduct or content of any third party on the Service.</li>
-            <li>Any content obtained from the Service.</li>
-            <li>
-              Unauthorized access, use, or alteration of your transmissions or
-              content.
-            </li>
+            <li>你访问或使用、或无法访问或使用本服务；</li>
+            <li>任何第三方在本服务上的行为或内容；</li>
+            <li>从本服务获得的任何内容；</li>
+            <li>未经授权的访问、使用或更改你的传输或内容。</li>
           </ul>
           <p>
-            Our total liability to you for any and all claims arising out of
-            your use of this free service shall not exceed the amount of zero
-            dollars ($0.00).
+            你因使用本免费服务产生的全部索赔，我们的总责任均不超过零美元（$0.00）。
           </p>
 
-          <h2>6. Intellectual Property</h2>
+          <h2>6. 知识产权</h2>
           <p>
-            The visual interfaces, graphics, design, compilation, information,
-            computer code, products, software, services, and all other elements
-            of the Service provided by Bentopdf are protected by intellectual
-            property and other laws. All materials contained on the Service are
-            the property of Bentopdf or our third-party licensors.
+            本服务的界面、图形、设计、信息、代码、产品、软件、服务及其他所有元素均受知识产权与相关法律保护。所有内容归 RayPDF 或合作的第三方所有。
           </p>
 
-          <h2>7. Governing Law</h2>
+          <h2>7. 适用法律</h2>
           <p>
-            These Terms shall be governed and construed in accordance with the
-            laws of India, without regard to its conflict of law provisions.
+            本条款受印度法律管辖并按其解释，不考虑法律冲突原则。
           </p>
 
-          <h2>8. Changes to Terms</h2>
+          <h2>8. 条款变更</h2>
           <p>
-            We reserve the right, at our sole discretion, to modify or replace
-            these Terms at any time. We will provide notice of changes by
-            updating the "Last Updated" date at the top of this page. By
-            continuing to access or use our Service after those revisions become
-            effective, you agree to be bound by the revised terms.
+            我们保留在任何时间自行修改或替换本条款的权利。如有变更，我们会更新本页面顶部的“最近更新”日期。继续访问或使用本服务即表示你同意受修订后的条款约束。
           </p>
 
-          <h2>9. Contact Us</h2>
+          <h2>9. 联系我们</h2>
           <p>
-            If you have any questions about these Terms, please contact us at
-            <a href="mailto:contact@bentopdf.com">contact@bentopdf.com</a>.
+            若对本条款有任何疑问，请发送邮件至
+            <a href="mailto:lp370304@gmail.com">lp370304@gmail.com</a>。
           </p>
         </div>
       </section>
@@ -173,46 +154,40 @@
             <div class="flex items-center justify-center md:justify-start mb-4">
               <img
                 src="images/favicon.svg"
-                alt="BentoPDF Logo"
+                alt="RayPDF 徽标"
                 class="h-10 w-10 mr-3"
               />
-              <span class="text-xl font-bold text-white">BentoPDF</span>
+              <span class="text-xl font-bold text-white">RayPDF</span>
             </div>
             <p class="text-gray-400 text-sm">
-              &copy; 2025 BentoPDF. All rights reserved.
+              &copy; 2025 RayPDF。保留所有权利。
             </p>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-4">Company</h3>
+            <h3 class="font-bold text-white mb-4">关于我们</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
-                <a href="about.html" class="hover:text-indigo-400">About Us</a>
+                <a href="about.html" class="hover:text-indigo-400">关于我们</a>
               </li>
-              <li><a href="faq.html" class="hover:text-indigo-400">FAQ</a></li>
+              <li><a href="faq.html" class="hover:text-indigo-400">常见问题</a></li>
               <li>
-                <a href="contact.html" class="hover:text-indigo-400"
-                  >Contact Us</a
-                >
+                <a href="contact.html" class="hover:text-indigo-400">联系我们</a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-4">Legal</h3>
+            <h3 class="font-bold text-white mb-4">法律信息</h3>
             <ul class="space-y-2 text-gray-400">
               <li>
-                <a href="terms.html" class="hover:text-indigo-400"
-                  >Terms and Conditions</a
-                >
+                <a href="terms.html" class="hover:text-indigo-400">使用条款</a>
               </li>
               <li>
-                <a href="privacy.html" class="hover:text-indigo-400"
-                  >Privacy Policy</a
-                >
+                <a href="privacy.html" class="hover:text-indigo-400">隐私政策</a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 class="font-bold text-white mb-4">Follow Us</h3>
+            <h3 class="font-bold text-white mb-4">关注我们</h3>
             <div class="flex justify-center md:justify-start space-x-4">
               <a
                 href="https://www.instagram.com/thebentopdf/"
@@ -227,7 +202,7 @@
                 <i data-lucide="linkedin"></i>
               </a>
               <a
-                href="https://x.com/BentoPDF"
+                href="https://x.com/RayPDF"
                 class="text-gray-400 hover:text-indigo-400"
               >
                 <svg
@@ -246,6 +221,7 @@
         </div>
       </div>
     </footer>
+    <script type="module" src="src/js/static-page.ts"></script>
     <script>
       lucide.createIcons();
     </script>
