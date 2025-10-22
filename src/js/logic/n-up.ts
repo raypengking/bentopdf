@@ -61,7 +61,7 @@ export async function nUpTool() {
 
     // Loop through the source pages in chunks of 'n'
     for (let i = 0; i < sourcePages.length; i += n) {
-      showLoader(`Processing sheet ${Math.floor(i / n) + 1}...`);
+      showLoader(`正在处理第 ${Math.floor(i / n) + 1} 张拼版页...`);
       const chunk = sourcePages.slice(i, i + n);
       const outputPage = newDoc.addPage([pageWidth, pageHeight]);
 
